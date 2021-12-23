@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Todo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class='col-6'>
+            <h2 class="text-primary">Todo Items</h2>
+        </div>
+        <div class="col-6 ">
+            <a asp-controller="Home" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Add to list
+            </a>
+        </div>
+    </div>
+
+    </div>
+    <br />
+    <br />
+
+<table class="table table-boarded table-striped" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Todo Itmes</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+       
+        @foreach (var obj in Model)
+       {
+  
+           <tr>
+               <td width="50%">
+                   @obj.Title
+               </td>
+               <td>
+                   <div class="w-75 btn-group" role="group">
+                       <a asp-action="Edit" asp-controller="Home" asp-route-id="@obj.Id"><i class="bi bi-pencil-square"></i> Edit</a>
+                   </div>
+               </td>
+
+               <td>
+                   <div class="w-75 btn-group" role="group">
+                       <a asp-action="Delete" asp-controller="Home" asp-route-id="@obj.Id"><i class="bi bi-trash-fill"></i>Delete</a>
+                   </div>
+               </td>
+           </tr>
+           
+       }
+       
+    </tbody>
+
+</table>
+ </div>
